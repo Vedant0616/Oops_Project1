@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>User control panel</title>
+    <style>
+        .card-group{
+            background-color:  #84bfc59e;
+            border: 5px solid #E2EFEF ;
+            border-radius: 40px;
+
+
+            justify-content: center;
+            align-items: center; 
+}
+        
+        h3{
+            padding: 10px;
+            border: 5px solid #E2EFEF ;
+            border-radius: 50px;
+            margin-top: 80px;
+
+            background-color: #ffc10775;
+            color: #0b0a0a ;
+
+        }
+        body{
+            background-image: url("/image/bgb.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+
+        
+
+
+
+    </style>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" th:href="@{/static/css/carousel.css}"/>
+</head>
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h3 class="display-4">User control panel</h3>
+    
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+
+        <div class="card-deck mb-3 text-center">
+            <div class="card-group">
+                <div class="vertical-center">
+
+                    <div class="card-body">
+                        <a th:href="@{/user/viewProfile}" class="btn btn-lg btn-block btn-warning rounded-pill"> <i
+                                class="fa fa-arrow-circle-o-left"></i>&nbsp;View profile</a>
+
+                    </div>
+
+
+                    <div class="card-body">
+                        <a th:href="@{/user/savedParkingSpaces}" class="btn btn-lg btn-block btn-warning rounded-pill"> <i
+                                class="fa fa-arrow-circle-o-left"></i>&nbsp;View saved parking spaces list</a>
+                    </div>
+
+
+                    <!-- <div class="card-body">
+                        <a th:href="@{/user/showFormForAdd}" class="btn btn-lg btn-block btn-warning rounded-pill"> <i
+                                class="fa fa-arrow-circle-o-left"></i>&nbsp;Add an parkingSpace on our website</a>
+                    </div> -->
+
+
+                    <div class="card-body">
+                        <a th:href="@{/user/pastVisits}" class="btn btn-lg btn-block btn-warning rounded-pill"> <i
+                                class="fa fa-arrow-circle-o-left"></i>&nbsp;Go to your past experiences</a>
+
+
+                    </div>
+
+                    <!-- <div class="card-body">
+                        <a th:href="@{/user/stays}" class="btn btn-lg btn-block btn-warning rounded-pill"> <i
+                                class="fa fa-arrow-circle-o-left"></i>My parkingSpaces</a>
+
+
+                    </div> -->
+
+                    <div class="card-body">
+                        <a th:href="@{/user/myBookings}" class="btn btn-lg btn-block btn-warning rounded-pill"><i
+                                class="fa fa-arrow-circle-o-left"></i>Check your bookings!</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div th:insert="~{/fragments/footer :: footer}"></div>
+
+
+<!-- Optional JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<!--------------->
+
+
+</body>
+</html>

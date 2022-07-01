@@ -1,0 +1,123 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>parking spaces</title>
+     <style>
+         body {
+
+            background-image: url("/image/bgb.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+         }
+         table{
+              background-color:  #84bfc59e;
+                border: 5px solid #E2EFEF ;
+                margin-top:80px;
+                color:white;
+         }
+         td{
+            color:white;
+         }
+
+
+    </style>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+
+    <!--  -->
+<style>
+    .search{
+        margin-top: 50px;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<div class="container-table">
+
+    <hr>
+    <hr>
+
+
+    <form class="search" action="#" th:action="@{/searchParkingSpaces}" th:object="${search}" method="get">
+        <div align="center">
+        <div class="search-container">
+            <label class="header-title">Find By: </label>
+            <input name="search" id="search" style="height:21px;"/>
+            <select name="criteria" id="criteria" style="height:27px;">
+                <option value="none" id="none">Show all</option>
+                <option value="parkingSpacePrice" id="parkingSpacePrice">Price less than</option>
+                <option value="parkingSpaceCity" id="parkingSpaceCity">City containing letter(s)</option>
+                <option value="parkingSpaceCountry" id="parkingSpaceCountry">Country containing letter(s)</option>
+
+            </select>
+            <button class="regular-action-button" style="display: initial !important;padding: 3px 12px !important;"
+                    type="submit">Search
+            </button>
+        </div>
+        </div>
+        <div th:if="${not #lists.isEmpty(search)}">
+
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Parking Photo</th>
+                    <th>Parking space Name</th>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th>Address</th>
+                    <th>Service</th>
+                    <th>Price/Hr</th>
+                    <th>Rating</th>
+
+
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="tempParkingSpaces : ${search}">
+
+                    <td class="w-25">
+                        <a th:href="@{|/viewParkingSpace/${tempParkingSpaces.id}|}">
+                            <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail1" alt="parkingSpace">
+                        </a>
+                    </td>
+                    <td th:text="${tempParkingSpaces.parkingSpaceName}"/>
+                    <td th:text="${tempParkingSpaces.countrey}"/>
+                    <td th:text="${tempParkingSpaces.city}"/>
+                    <td th:text="${tempParkingSpaces.adress}"/>
+                    <td th:text="${tempParkingSpaces.service}"/>
+                    <td th:text="${tempParkingSpaces.ppn}+' $'"/>
+                    <td th:text="${tempParkingSpaces.getRatting()>0 ? tempParkingSpaces.getRatting()+'/5' : 'No ratting yet'}"  />
+
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+
+<div th:insert="~{/fragments/footer :: footer}"></div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>

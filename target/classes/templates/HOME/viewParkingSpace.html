@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Inspect parking</title>
+    
+      <style>
+         body {
+
+            background-image: url("/image/bgb.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+         }
+         table{
+              background-color:  #84bfc59e;
+                border: 5px solid #E2EFEF ;
+                margin-top:80px;
+                color:white;
+         }
+         td{
+            color:white;
+         }
+
+
+    </style>
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <!--  -->
+
+
+</head>
+
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<section class="jumbotron text-left">
+    <div class="container">
+        <h1 class="jumbotron-heading">Parking space Details</h1>
+        <p class="lead text-muted mb-0"> Here are the details of the Parking space</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-5" th:object="${parkingSpace}" method="POST">
+            <td class="w-25">
+                <img src="https://i1.wp.com/www.custommadewraps.com/wp-content/uploads/2017/12/Products_NoImageYet.jpg" class="img-fluid img-thumbnail" alt="parkingSpace">
+            </td>
+            <p th:text="'ParkingSpace Name: ' + ${parkingSpace.parkingSpaceName}"/>
+            <p th:text="'Hosted by '+ ${parkingSpace.user.userName}"/>
+            <p th:text="'Countrey: ' + ${parkingSpace.countrey}"/>
+            <p th:text="'City: ' + ${parkingSpace.city}"/>
+            <p th:text="'Adress: ' + ${parkingSpace.adress}"/>
+            <p th:text="'Price/Night: ' + ${parkingSpace.ppn}"/>
+            <p th:text="'Rating:' +${parkingSpace.getRatting()>0 ?parkingSpace.getRatting()+'/5' : 'No ratting yet'}"  />
+
+            <div sec:authorize="hasAuthority('ROLE_USER')">
+                <a th:href="@{'/user/viewParkingSpace/'+${parkingSpace.id}+'/calendar'}" class="btn btn-primary btn-lg">Show the booking calendar for this parkingSpace</a>
+            </div>
+
+            <div sec:authorize="isAnonymous()">
+                <a th:href="@{/stays}" class="btn btn-primary btn-lg">Log in to get the posibility to access our reservation system</a>
+            </div>
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+    <hr>
+    <a th:href="@{/parkingSpaces}">Back to Parking space List</a>
+</div>
+<div th:insert="~{/fragments/footer :: footer}"></div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

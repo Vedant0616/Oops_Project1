@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin decision</title>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <!--  -->
+
+
+</head>
+
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<section class="jumbotron text-left">
+    <div class="container">
+        <h1 class="jumbotron-heading">Pending parking spaces details</h1>
+        <p class="lead text-muted mb-0"> Here are the detail infos of the pending parkingSpace</p>
+    </div>
+</section>
+
+<div class="container-checkParkingSpace">
+    <div class="row-checkParkingSpace">
+
+        <div class="col-md-5" th:object="${parkingSpace}" method="POST">
+            <p th:text="'ParkingSpace name: ' + ${parkingSpace.parkingSpaceName}"/>
+            <p th:text="'ParkingSpace countrey: ' + ${parkingSpace.countrey}"/>
+            <p th:text="'ParkingSpace city: ' + ${parkingSpace.city}"/>
+            <p th:text="'Adress: ' + ${parkingSpace.adress}"/>
+            <p th:text="'Initial price: ' + ${parkingSpace.ppn}"/>
+            <p th:text="'Owner name: ' + ${parkingSpace.user.getUserName()}"/>
+
+
+            <form id="statusForm" class="w3-section" method="post" th:action="@{/admin/saveStatus}"
+                  th:object="${parkingSpace}">
+                <input type="hidden" name="parkingSpaceId" th:value="${parkingSpace.id}">
+                <input type="hidden" id="parkingSpaceStatus" name="parkingSpaceStatus" value="">
+                <button class="w3-button w3-green status-button" data-status="accepted">Keep</button>
+                <button class="w3-button w3-red status-button" data-status="declined">Delete</button>
+            </form>
+        <!-- </div>
+        <a th:href="@{/admin/pendingParkingSpaces}">Back to posting requests</a>
+    </div> -->
+
+    <hr>
+
+</div>
+<div th:insert="~{/fragments/footer :: footer}"></div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+<script>
+    $(".status-button").click(function (event) {
+        event.preventDefault();
+        const status = $(this).data("status");
+        $("#parkingSpaceStatus").val(status);
+        $("#statusForm").submit();
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Parking space form</title>
+
+
+  <style>
+        .centrare {
+            background-color:  #84bfc59e;
+            color: #E2EFEF ;
+            padding: 10;
+
+            position: relative;
+            top: 0%;
+            left: 50%;
+
+            padding: 15px;
+            border: 5px solid #E2EFEF ;
+            border-radius:35px;
+            margin-top: 80px;
+            margin-bottom: 80px;
+
+            justify-content: center;
+            align-items: center;
+        }
+        body {
+
+            background-image: url("/image/bgb.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #password{
+            background-color: #505150;
+            color:#E2EFEF ;
+            font-weight : 900;
+        }
+        #userName{
+            background-color: #505150;
+            color:#E2EFEF;
+            font-weight : 900;
+        }
+        #passwordConfirmation{
+            background-color: #505150;
+            color:#E2EFEF;
+            font-weight : 900;
+        }
+        #emailConfirmation{
+            background-color: #505150;
+            color:#E2EFEF;
+            font-weight : 900;
+        }
+        #email{
+            background-color: #505150;
+            color:#E2EFEF;
+            font-weight : 900;
+        }
+        #carReg{
+        background-color: #505150;
+        color:#E2EFEF;
+        font-weight : 900;
+        }
+        #phone{
+        background-color: #505150;
+        color:#E2EFEF;
+        font-weight : 900;
+        }
+        #otp{
+        background-color: #505150;
+        color:#E2EFEF;
+        font-weight : 900;
+        }
+        h1{
+            text-align: center;
+            padding: 10px;
+            color:white;
+           
+          
+        }
+        .form-group{
+            text-align: center;
+
+        }
+
+        .form-control{
+            border:1px solid white;
+            border-radius: 20px;
+
+        }
+
+
+        
+        .control-label{
+            font-weight : 900;
+        }
+
+
+    </style>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <!--  -->
+    <style>
+
+        .theForm{
+            margin-left : 32%;
+            margin-top: 150px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<div class="container-addForm">
+
+
+
+
+
+    <form class="theForm" action="#" th:action="@{/worker/save}" th:object="${parkingSpace}" method="POST">
+        <h1  >Save Parking space</h1>
+        <input type="text" th:field="*{parkingSpaceName}"
+               class="form-control mb-4 col-4" placeholder="Parking space name"/>
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('parkingSpaceName')}" th:errors="*{parkingSpaceName}"></p>
+
+        <input type="text" th:field="*{countrey}"
+               class="form-control mb-4 col-4" placeholder="Country"/>
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('countrey')}" th:errors="*{countrey}"></p>
+
+
+        <input type="text" th:field="*{city}"
+               class="form-control mb-4 col-4" placeholder="City"/>
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
+
+
+        <input type="text" th:field="*{adress}"
+               class="form-control mb-4 col-4" placeholder="Address"/>
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}"></p>
+
+
+        <input type="text" th:field="*{ppn}"
+               class="form-control mb-4 col-4" placeholder="Price/Hr"/>
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('ppn')}" th:errors="*{ppn}"></p>
+        <input type="text" th:field="*{service}"
+               class="form-control mb-4 col-4" placeholder="Service provided"/>
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('service')}" th:errors="*{service}"></p>
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+
+    <hr>
+    <div align="center">
+    <a th:href="@{/worker/stays}" style="color:red">Back to Parking space List</a>
+    </div>
+</div>
+<div th:insert="~{/fragments/footer :: footer}"></div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Inspect Parking space</title>
+     <style>
+         body {
+
+            background-image: url("/image/bgb.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+         }
+         table{
+              background-color:  #84bfc59e;
+                border: 5px solid #E2EFEF ;
+                margin-top:80px;
+                color:white;
+         }
+         td{
+            color:white;
+         }
+
+
+    </style>
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+
+
+</head>
+
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<section class="jumbotron text-left">
+    <div class="container">
+        <h1 class="jumbotron-heading">Parking space Details</h1>
+        <p class="lead text-muted mb-0"> Here are the detail infos of the Parking space</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-5" th:object="${parkingSpace}" method="POST">
+            <td class="w-25">
+                <img src="/image/parking-spaces.png" class="img-fluid img-thumbnail" alt="parkingSpace">
+            </td>
+            <p th:text="'ParkingSpace Name: ' + ${parkingSpace.parkingSpaceName}"/>
+            <p th:text="'Hosted by '+ ${parkingSpace.user.userName}"/>
+            <p th:text="'Countrey: ' + ${parkingSpace.countrey}"/>
+            <p th:text="'City: ' + ${parkingSpace.city}"/>
+            <p th:text="'Adress: ' + ${parkingSpace.adress}"/>
+            <p th:text="'Price/Night: ' + ${parkingSpace.ppn}"/>
+            <p th:text="'Number of active bookings: '+ ${valid.size()}"/>
+            <p th:text="${parkingSpace.getRatting()>0 ?parkingSpace.getRatting() : 'No ratting yet'}"  />
+
+
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>Check in</th>
+                <th>Check out</th>
+                <th>Who made this reservation</th>
+
+
+
+
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="tempBookings : ${valid}">
+
+                <td th:text="${tempBookings.getCheckIn().toString().substring(0,10)}"/>
+                <td th:text="${tempBookings.getCheckOut().toString().substring(0,10)}"/>
+                <td th:text="${tempBookings.getUser().getUserName()}"/>
+
+            </tr>
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+
+
+    <hr>
+    <a th:href="@{/worker/stays}">Back to Parking space List</a>
+
+</div>
+<div th:insert="~{/fragments/footer :: footer}"></div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

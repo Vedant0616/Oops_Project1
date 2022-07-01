@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<div th:insert="~{/fragments/header :: header}"></div>
+<head>
+<meta charset="UTF-8" />
+<title>this is home page</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="card">
+				<div class="card-body my-5">
+					<div class="container text-center">
+						<img src="" style="height: 200px; width: 200px"
+							class="my_profile_picture" th:src="@{'/img/contact_logo.png'}"
+							alt="profile photo" />
+					</div>
+
+					<h1
+						class="text-center mt-3 text-secondary font-italic font-weight-light">
+						Start Adding your contact on cloud...</h1>
+
+				<!-- 	<a th:href="@{/user/payments}"
+						class="btn btn-primary mt-4 btn-block text-uppercase">Add
+						New Contact</a>
+						
+						<hr /> 
+						 -->
+						<h3 class="my-3">Donate Us</h3>
+						<input id="payment_field" type="text" class="form-control my-2" placeholder="Enter amount here" />
+						
+						<div class="container text-center mt-3">
+							<button onclick="paymentStart()" class="btn btn-success btn-block">Checkout</button>
+						</div>
+
+				</div>
+			</div>
+		</div>
+
+		<script>
+        $(document).ready(() => {
+          $(".item").removeClass("active");
+          $("#home-link").addClass("active");
+        });
+      </script>
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+		
+		<script th:src="@{/js/script.js}"></script>
+	</section>
+</body>
+</html>

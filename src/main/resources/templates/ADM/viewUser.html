@@ -1,0 +1,93 @@
+[10:52 pm, 05/12/2021] Aryan  Basantani Bphc: <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Inspect parking space</title>
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+
+
+</head>
+
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<section…
+[10:52 pm, 05/12/2021] Aryan  Basantani Bphc: view parking spaces
+[11:37 pm, 05/12/2021] Aryan  Basantani Bphc: <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin inspect user</title>
+    <style>
+        body{
+            background-image:url("/image/bgb.jpg");
+            color:white;
+       }
+    </style>
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <!--  -->
+
+
+</head>
+
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+
+
+<section class="jumbotron text-left">
+    <div class="theUser">
+        <h1 class="jumbotron-heading" align="center">User Details</h1>
+        <p class="lead text-muted mb-0" align="center"> Here are the details of the User</p>
+    </div>
+</section>
+<div class="container-viewUser">
+
+
+
+    <div class="row" style="color:white" >
+
+        <div class="col-md-5" th:object="${user}" method="POST">
+            <p th:text="'user name: ' + ${user.userName}"/>
+            <p th:text="'email: ' + ${user.email}"/>
+            <p  th:text="'owned parkingSpaces: '+${apartNames}"></p>
+            <p photo to be added/>
+
+        </div>
+
+
+
+
+    </div>
+
+    <hr>
+    <a th:href="@{/admin/users}" style="color:red">Back to User List</a>
+</div>
+<div th:insert="~{/fragments/footer :: footer}"></div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

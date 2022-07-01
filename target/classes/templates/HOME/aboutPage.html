@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>About Us</title>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <style>
+    body {
+
+background-image: url("/image/bgb.jpg");
+background-repeat: no-repeat;
+background-size: 100% 150%;}
+.col-md-6
+{
+    background-color:#84bfc59e;
+    border-radius: 5%;
+    margin-top: 5%;
+    margin-left:11%;
+    border-color: tomato;
+
+}
+.button {
+  background-color: #e20d78; /* Green */
+  border-width: 2px;
+  color:white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+    </style>
+</head>
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+<div class="custom1 d-flex flex-column sticky-footer-wrapper">
+    <div class="custom2 container flex-fill">
+        <section class="mb-4">
+            <div class="col-md-12">
+                <div class="row about_content" style="margin-left: 200px; color:white">
+                    <div class="col-md-6">
+                        <div class="about"> <h2 class="h1-responsive font-weight-bold text-center my-4" >About us</h2></div>
+                        <p class="text-center w-responsive mx-auto "  >
+                           Car parking services are provided through this website and a worker can add or edit his parking spot according to his need. User can book the book slot and the sevices provided by the worker.
+                                                    </p>
+
+  <div class="text-center">
+            <a th:href="@{/contact}" style="border-radius: 5px; margin-top: 3%" class="button md-10" >Feedback
+            </a>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- 
+        <div class="text-center">
+            <a th:href="@{/contact}" style="border-radius: 5px; margin-top: 3%" class="button">Feedback
+            </a>
+        </div> -->
+    </div>
+</div>
+<div th:insert="~{/fragments/footer :: footer}"></div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+
+
+</body>
+</html>

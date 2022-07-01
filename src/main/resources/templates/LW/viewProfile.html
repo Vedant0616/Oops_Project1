@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Inspect profile</title>
+     <style>
+    p{
+    background-color:  #84bfc59e;
+            border: 2px solid #E2EFEF ;
+            border-radius: 10px;
+
+
+            justify-content: center ;
+            align-items: center;
+            
+    
+    
+    }
+        .card-group{
+            background-color:  #84bfc59e;
+            border: 0px solid #E2EFEF ;
+            border-radius: 40px;
+
+
+            justify-content: center;
+            align-items: center;
+
+        }
+        h3{
+            padding : 10px;
+            border: 0px solid #E2EFEF ;
+            border-radius: 50px;
+            margin-top: 80px;
+          opacity: 0.5;
+            background-color: blue;
+            color: #0b0a0a ;
+
+        }
+        body{
+            background-image: url("/image/bgb.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+ .container{
+ text-align:center;
+  background-color: purple;
+  opacity:0.5;
+   padding: 10px;
+            border: 0px solid #E2EFEF ;
+            border-radius: 50px;
+            margin-top: 80px;
+            color: #0b0a0a ;
+ }
+
+
+
+
+
+    </style>
+       <style>
+        .row{
+            display: table;
+            margin: 10px auto;
+          
+            background-color:  #84bfc59e;
+            
+            justify-content: center;
+            align-items: center;
+        }
+
+
+
+    </style>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link th:href="@{/css/style.css}" href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <style>
+        .box{
+            display: table;
+            margin: 0 auto;
+            border: 1px solid black
+        }
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<div >
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">My profile</h1>
+            
+        </div>
+    </section>
+
+    <div class="box">
+        <div class="row">
+
+            <div class="col-md-5" th:object="${user}" method="POST">
+                <td class="w-25">
+                    <img src="https://www.nicepng.com/png/detail/780-7805650_generic-user-image-male-man-cartoon-no-eyes.png"
+                         class="img-fluid img-thumbnail" alt="parkingSpace">
+                </td>
+                <p th:text="'User Name: ' + ${user.userName}"/>
+                <p th:text="${user.getRatting()>0 ? 'Rating: '+user.getRatting()+'/5' : 'No rating yet'}"  />
+                <p th:text="'Reservations made so far: '+${size}"/>
+                <!-- <p th:text="'Total spent '+${sum}+' $'"/> -->
+                <p th:text="'Active Parking spaces owned on CarParking: '+${activeParkingSpaces}"/>
+                <p th:text="'Total money received: '+${guestIncome}+' $'"/>
+                <p th:text="'Bookings placed so far on my Parking space: '+${reservations}"/>
+
+
+
+            </div>
+
+
+        </div>
+
+
+        <hr>
+
+    </div>
+</div>
+<div th:insert="~{/fragments/footer :: footer}"></div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
